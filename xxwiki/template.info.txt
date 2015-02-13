@@ -1,0 +1,7 @@
+base     xxwiki
+author   iamchenxin
+email    iamchenxin@gmail.com
+date     2015-02-11
+name     xxWiki Template
+desc     based on default template
+url      wiki.qituc.com
