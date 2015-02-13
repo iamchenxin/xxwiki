@@ -76,9 +76,9 @@
 
 /* toc */
 #dw__toc {
-    float: none;
+    float: right;
     margin: 0 0 1em 0;
-    width: auto;
+    width: 10em;
     border-left-width: 0;
     border-bottom: 1px solid @ini_border;
 }
@@ -281,23 +281,39 @@ body {
 
     .dokuwiki .xxtranslation{
         position: absolute;
-        top: -6em;
-        left: 75%;
+        top: 0em;
+        left: 0;
         overflow: hidden;
-        max-width: 30%;
-        padding: 0.5em 0em ;
+        width: 3em;
+        margin:0.1em 0 0 0.35em;;
+        padding: 0 ;
 
         background-color: @ini_background;
         color: @ini_text_alt;
-        padding: .1em .35em;
         display: block;
 
+        .plugin_translation{
+            font-size: 75%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border: none;
+            border-right: 1px solid #eee;
+        }
+        #translation__dropdown{
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
         .wikilink1
         {
+            border: none;
             background-color: @ini_background;
         }
         .wikilink2
         {
+            border: none;
             background-color: @ini_background;
         }
     }
