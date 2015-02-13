@@ -32,7 +32,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
         <?php include('tpl_header.php') ?>
 
-        <div class="wrapper group">
+        <div class="wrapper group" id="xxexpandcon">
 
             <?php if($showSidebar): ?>
                 <!-- ********** ASIDE ********** -->
@@ -56,6 +56,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                             if ($translation) echo $translation->showTranslations();
                             ?>
                     </div>
+                    <div id="xxexpand" onclick="xxexpandcontent()"><img src="<?php echo tpl_basedir(); ?>images/expand.png"/></div>
                 <div class="pageId">
                     <span><?php echo hsc($ID) ?></span>
                 </div>

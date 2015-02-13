@@ -77,3 +77,11 @@ jQuery(function(){
         $content.css('min-height', $sidebar.height());
     }
 });
+
+function xxexpandcontent(){
+    if( document.getElementById("xxexpandcon").style.maxWidth == "100%"){
+        document.getElementById("xxexpandcon").style.maxWidth = "75em";
+    }else{
+        document.getElementById("xxexpandcon").style.maxWidth = "100%";
+    }
+}
