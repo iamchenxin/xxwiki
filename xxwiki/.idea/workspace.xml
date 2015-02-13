@@ -38,27 +38,27 @@
       <file leaf-file-name="tpl_header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpl_header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1805">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1805">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="design.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="design.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/design.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.86747" vertical-offset="4757" max-vertical-offset="9842">
-              <caret line="276" column="16" selection-start-line="276" selection-start-column="16" selection-end-line="276" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.7197605" vertical-offset="7360" max-vertical-offset="9842">
+              <caret line="419" column="24" selection-start-line="419" selection-start-column="24" selection-end-line="419" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mobile.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mobile.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/mobile.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.651497" vertical-offset="1185" max-vertical-offset="7657">
+            <state vertical-scroll-proportion="-10.264151" vertical-offset="1185" max-vertical-offset="7657">
               <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
               <folding />
             </state>
@@ -70,8 +70,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/css/design.less" />
         <option value="$PROJECT_DIR$/css/mobile.less" />
+        <option value="$PROJECT_DIR$/css/design.less" />
       </list>
     </option>
   </component>
@@ -238,6 +238,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/design.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4757" max-vertical-offset="9842">
+          <caret line="276" column="16" selection-start-line="276" selection-start-column="16" selection-end-line="276" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mobile.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7657">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl_footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1805">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tpl_footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
@@ -254,18 +286,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/design.less">
+    <entry file="file://$PROJECT_DIR$/css/mobile.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.86747" vertical-offset="4757" max-vertical-offset="9842">
-          <caret line="276" column="16" selection-start-line="276" selection-start-column="16" selection-end-line="276" selection-end-column="16" />
+        <state vertical-scroll-proportion="-10.264151" vertical-offset="1185" max-vertical-offset="7657">
+          <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/mobile.less">
+    <entry file="file://$PROJECT_DIR$/css/design.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.651497" vertical-offset="1185" max-vertical-offset="7657">
-          <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.7197605" vertical-offset="7360" max-vertical-offset="9842">
+          <caret line="419" column="24" selection-start-line="419" selection-start-column="24" selection-end-line="419" selection-end-column="24" />
           <folding />
         </state>
       </provider>
