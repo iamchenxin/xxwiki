@@ -85,3 +85,24 @@ function xxexpandcontent(){
         document.getElementById("xxexpandcon").style.maxWidth = "100%";
     }
 }
+
+function xxside_resize(){
+    var top_width = jQuery("#dokuwiki__header").width();
+    var win_width =jQuery(window).width();
+
+    var bar_width = (win_width-top_width)/2 - 10;
+
+    jQuery(".desktop #xxsidebar").width(bar_width);
+}
+
+function xxside_show(){
+    xxside_resize();
+    jQuery(".desktop #xxsidebar").slideToggle(1000);
+
+}
+
+function xxinit(){
+    jQuery("#xxtoolpop").click(xxside_show);
+    jQuery(window).resize(xxside_resize);
+}
+jQuery(xxinit);

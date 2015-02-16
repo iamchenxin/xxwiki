@@ -32,23 +32,27 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
         <?php include('tpl_header.php') ?>
 
-        <div class="wrapper group" id="xxexpandcon">
+            <div class="xxcontenthook rawedges" id="xxsidebar">
 
-            <?php if($showSidebar): ?>
-                <!-- ********** ASIDE ********** -->
-                <div id="dokuwiki__aside"><div class="pad aside include group">
-                    <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
-                    <div class="content">
-                        <?php tpl_flush() ?>
-                        <?php tpl_includeFile('sidebarheader.html') ?>
-                        <?php tpl_include_page($conf['sidebar'], true, true) ?>
-                        <?php tpl_includeFile('sidebarfooter.html') ?>
-                    </div>
-                </div></div><!-- /aside -->
-            <?php endif; ?>
+                <?php if($showSidebar): ?>
+                    <!-- ********** ASIDE ********** -->
+                    <div id="dokuwiki__aside"><div class="pad aside include group">
+                            <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
+                            <div class="content">
+                                <?php tpl_flush() ?>
+                                <?php tpl_includeFile('sidebarheader.html') ?>
+                                <?php tpl_include_page($conf['sidebar'], true, true) ?>
+                                <?php tpl_includeFile('sidebarfooter.html') ?>
+                            </div>
+                        </div></div><!-- /aside -->
+                <?php endif; ?>
+            </div>
+
+        <div class="wrapper group" id="xxexpandcon">
 
             <!-- ********** CONTENT ********** -->
             <div id="dokuwiki__content"><div class="pad group">
+
 
                     <div class="xxtranslation">
                             <?php
@@ -56,6 +60,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                             if ($translation) echo $translation->showTranslations();
                             ?>
                     </div>
+                    <div id="xxtoolpop"></div>
                     <div id="xxexpand" onclick="xxexpandcontent()"><img src="<?php echo tpl_basedir(); ?>images/expand.png"/></div>
                 <div class="pageId">
                     <span><?php echo hsc($ID) ?></span>
