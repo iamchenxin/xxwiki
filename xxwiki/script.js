@@ -101,8 +101,64 @@ function xxside_show(){
 
 }
 
+if (!String.prototype.format) {
+    String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+            return typeof args[number] != 'undefined'
+                ? args[number]
+                : match
+                ;
+        });
+    };
+}
+
+function toobar_youdao(){
+    if (typeof window.toolbar !== 'undefined') {
+        toolbar[toolbar.length] = {
+            type: "format",
+            title: "Voice",
+            icon: "../../tpl/xxwiki/images/toolbar/voice.png",
+            key: "",
+            open: "<wrap vo>",
+            sample: "WORD",
+            close: "</wrap>"
+        };
+     //   var str = "path ={0} toolbar.length = {1}".format("../../tpl/xxwiki/images/toolbar",toolbar.length);
+      //  alert(str);
+    }
+  //  alert("haha");
+}
+
+var audioElement ;
+function voice_test(){
+//        audioElement.setAttribute('src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3');
+    var str="http://dict.youdao.com/dictvoice?audio=";
+    str += jQuery(this).text();
+    str+="&type=2";
+    audioElement.setAttribute('src', str);
+    audioElement.setAttribute('autoplay', 'autoplay');
+    //audioElement.load()
+    jQuery.get();
+    audioElement.addEventListener("load", function () {
+        audioElement.play();
+    }, true);
+
+    audioElement.play();
+    //   $(this).text(str);
+
+}
+
 function xxinit(){
+    toobar_youdao();
+}
+xxinit();
+
+function jQ_xxinit(){
+    audioElement = document.createElement('audio');
+    jQuery(".wrap_vo").click(voice_test);
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
+
 }
-jQuery(xxinit);
+jQuery(jQ_xxinit);
