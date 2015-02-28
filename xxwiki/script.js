@@ -149,6 +149,73 @@ function voice_test(){
 
 }
 
+
+function xxeditsize(height){
+    var $textarea = jQuery('#wiki__text');
+    $textarea.css('height', height+'px');
+    DokuCookie.setValue('sizeCtl',$textarea.css('height'));
+}
+
+var currentInput = "numin1";
+function xxnumin_get(numinId){
+
+}
+
+function xxeditsize_add(){
+
+    var $sizect = jQuery('#size__ctl');
+    var sizect=$sizect[0];
+    if(!sizect)return;
+
+    var mdiv =jQuery("<div id='xxeditsize'></div>");
+    var numin1 = jQuery("<input type='text' id='numin1' name='textinput' value='150' />");
+    var chstr1= DokuCookie.getValue('numin1');
+
+    if(!chstr1){chstr1="150";}
+
+    numin1.attr("value",chstr1);
+
+    var numin2 = jQuery("<input type='text' id='numin2' name='textinput' value='400' />");
+    var chstr2= DokuCookie.getValue('numin2');
+    if(!chstr2){chstr2="400";}
+    numin2.attr("value",chstr2);
+
+
+    var bt=jQuery("<input name='xxSet' class='button' type='button' value='Set'>");
+    currentInput="numin1";
+
+    bt.attr("value","Set"+chstr1);
+    bt.click(function(){
+        var numcurrent =document.getElementById(currentInput).value;
+        DokuCookie.setValue(currentInput,""+numcurrent); //store to cookie
+        if(currentInput=="numin1"){
+            currentInput="numin2";
+        }else{currentInput="numin1";}
+        var hh=parseInt(numcurrent);
+        xxeditsize(hh);
+        numcurrent =document.getElementById(currentInput).value;
+        bt.attr("value","Set"+numcurrent);
+
+    });
+    mdiv.append(numin1);
+    mdiv.append(numin2);
+    mdiv.append(bt);
+
+    jQuery("#size__ctl").after(mdiv);
+
+}
+
+function SetTotop(){
+    var $xtoolbar=jQuery("#tool__bar");
+    var xtoolbar=$xtoolbar[0];
+    var totop =  jQuery("#realtotop");
+    if(!xtoolbar){
+       totop.attr("href","#dokuwiki__content");
+    }else{
+        totop.attr("href","#tool__bar");
+    }
+}
+
 function xxinit(){
     toobar_youdao();
 }
@@ -159,6 +226,8 @@ function jQ_xxinit(){
     jQuery(".wrap_vo").click(voice_test);
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
+    xxeditsize_add();
+    SetTotop();
 
 }
 jQuery(jQ_xxinit);

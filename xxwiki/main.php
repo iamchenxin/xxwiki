@@ -47,7 +47,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                         </div></div><!-- /aside -->
                 <?php endif; ?>
             </div>
-
+            <div id="backtotop"><a href="#dokuwiki__content" id="realtotop"><img src="<?php echo tpl_basedir(); ?>images/totop.png"/></a></div>
         <div class="wrapper group" id="xxexpandcon">
 
             <!-- ********** CONTENT ********** -->
@@ -61,6 +61,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                             ?>
                     </div>
                     <div id="xxtoolpop"></div>
+
                     <div id="xxexpand" onclick="xxexpandcontent()"><img src="<?php echo tpl_basedir(); ?>images/expand.png"/></div>
                 <div class="pageId">
                     <span><?php echo hsc($ID) ?></span>
