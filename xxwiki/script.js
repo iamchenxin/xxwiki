@@ -292,7 +292,6 @@ function jQ_xxinit(){
 
     if (device_class.match(/phone/)){
         jQuery(".wrap_vo").click(voice_you_raw);
-        alert("iam phone");
     }else{
         init_ox_voice(".wrap_vo");
     }
