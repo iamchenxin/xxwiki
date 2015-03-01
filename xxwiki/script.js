@@ -97,8 +97,7 @@ function xxside_resize(){
 
 function xxside_show(){
     xxside_resize();
-    jQuery(".desktop #xxsidebar").slideToggle(1000);
-
+    jQuery(".desktop #xxsidebar").slideToggle(500);
 }
 
 if (!String.prototype.format) {
@@ -131,24 +130,96 @@ function toobar_youdao(){
 }
 
 var audioElement ;
-function voice_test(){
+function voice_you_raw(){
 //        audioElement.setAttribute('src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3');
     var str="http://dict.youdao.com/dictvoice?audio=";
     str += jQuery(this).text();
     str+="&type=2";
     audioElement.setAttribute('src', str);
     audioElement.setAttribute('autoplay', 'autoplay');
-    //audioElement.load()
-    jQuery.get();
-    audioElement.addEventListener("load", function () {
-        audioElement.play();
-    }, true);
-
-    audioElement.play();
-    //   $(this).text(str);
-
 }
 
+// --------------oxford voice ----------------------
+var xxaudio;
+var srcogg;
+var srcmp3;
+var faildword;
+
+function build_oxford_us_str(words){
+    words=words.trim(); // use trim to move white space and tab
+    var xxword=words.toLowerCase();
+    if(/[^a-z]/.test(xxword)==true)return ; //not a oxford word return
+    var str = "http://www.oxforddictionaries.com/us/media/american_english/us_pron/";
+    var backstr = xxword+"__us_1";
+    str+= backstr.slice(0,1)+'/';
+    str+= backstr.slice(0,3)+'/';
+    str+= backstr.slice(0,5)+'/';
+    str += backstr;
+    return str;
+}
+function build_uk_str(words){
+    words=words.trim(); // use trim to move white space and tab
+    var xxword=words.toLowerCase();
+    if(/[^a-z]/.test(xxword)==true)return ; //not a oxford word return
+    var str = "http://www.oxforddictionaries.com/us/media/american_english/uk_pron/";
+    var backstr = xxword+"__gb_1_8";
+    str+= backstr.slice(0,1)+'/';
+    str+= backstr.slice(0,3)+'/';
+    str+= backstr.slice(0,5)+'/';
+    str += backstr;
+    return str;
+}
+
+function voice_youdao(){
+    var str="http://dict.youdao.com/dictvoice?audio=";
+    str += faildword;
+    str+="&type=1";
+    jQuery(xxaudio).attr('onerror',"");
+    srcogg.attr('src',"");
+    srcmp3.attr('src',"");
+    xxaudio.setAttribute('src', str);
+    xxaudio.setAttribute('autoplay', 'autoplay');
+}
+
+function voice_play(urlstr){
+    srcogg.attr('src',urlstr+".ogg");
+    srcmp3.attr('src',urlstr+".mp3");
+    xxaudio.setAttribute('src', urlstr+".mp3");
+    xxaudio.setAttribute('autoplay', 'autoplay');
+}
+
+function voice_oxford_uk(){
+    var oxurl= build_uk_str(faildword);
+    if(oxurl==undefined){
+        voice_youdao();
+        return;
+    }
+    jQuery(xxaudio).attr('onerror',"voice_youdao()");
+    voice_play(oxurl);
+}
+
+function voice_oxford(){  // default is us voice
+    var xword = jQuery(this).text();
+    faildword=xword;
+    var oxurl= build_oxford_us_str(xword);
+    if(oxurl==undefined){
+        voice_youdao();
+        return;
+    }
+    jQuery(xxaudio).attr('onerror',"voice_oxford_uk()");
+    voice_play(oxurl);
+}
+
+function init_ox_voice(dst_client){
+    xxaudio = document.createElement('audio');
+    srcogg = jQuery("<source src='' type='audio/ogg'>");
+    srcmp3 = jQuery("<source src='' type='audio/mpeg'>");
+    jQuery(xxaudio).append(srcogg);
+    jQuery(xxaudio).append(srcmp3);
+    jQuery(xxaudio).attr('autoplay', 'autoplay');
+    jQuery(dst_client).click(voice_oxford);
+}
+// END END END END
 
 function xxeditsize(height){
     var $textarea = jQuery('#wiki__text');
@@ -223,7 +294,8 @@ xxinit();
 
 function jQ_xxinit(){
     audioElement = document.createElement('audio');
-    jQuery(".wrap_vo").click(voice_test);
+    init_ox_voice(".wrap_vo");
+    jQuery(".wrap_voy").click(voice_you_raw);
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
     xxeditsize_add();
