@@ -25,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="design.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="design.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/design.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51676303" vertical-offset="8502" max-vertical-offset="11210">
+            <state vertical-scroll-proportion="-8.433962" vertical-offset="8502" max-vertical-offset="11210">
               <caret line="471" column="26" selection-start-line="471" selection-start-column="26" selection-end-line="471" selection-end-column="26" />
               <folding />
             </state>
@@ -85,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2350" max-vertical-offset="5890">
-              <caret line="138" column="54" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="54" />
+            <state vertical-scroll-proportion="-0.19306931" vertical-offset="3594" max-vertical-offset="5795">
+              <caret line="183" column="39" selection-start-line="183" selection-start-column="39" selection-end-line="183" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -135,8 +135,8 @@
         <option value="$PROJECT_DIR$/css/pagetools.less" />
         <option value="$PROJECT_DIR$/css/mobile.less" />
         <option value="$PROJECT_DIR$/main.php" />
-        <option value="$PROJECT_DIR$/script.js" />
         <option value="$PROJECT_DIR$/css/design.less" />
+        <option value="$PROJECT_DIR$/script.js" />
       </list>
     </option>
   </component>
@@ -248,7 +248,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28802082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32946146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -668,18 +668,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script.js">
+    <entry file="file://$PROJECT_DIR$/css/design.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2350" max-vertical-offset="5890">
-          <caret line="138" column="54" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="54" />
+        <state vertical-scroll-proportion="-8.433962" vertical-offset="8502" max-vertical-offset="11210">
+          <caret line="471" column="26" selection-start-line="471" selection-start-column="26" selection-end-line="471" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/design.less">
+    <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51676303" vertical-offset="8502" max-vertical-offset="11210">
-          <caret line="471" column="26" selection-start-line="471" selection-start-column="26" selection-end-line="471" selection-end-column="26" />
+        <state vertical-scroll-proportion="-0.19306931" vertical-offset="3594" max-vertical-offset="5795">
+          <caret line="183" column="39" selection-start-line="183" selection-start-column="39" selection-end-line="183" selection-end-column="39" />
           <folding />
         </state>
       </provider>

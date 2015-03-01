@@ -137,12 +137,11 @@ function voice_you_raw(){
     str+="&type=2";
     audioElement.setAttribute('src', str);
     audioElement.setAttribute('autoplay', 'autoplay');
+    audioElement.play();
 }
 
 // --------------oxford voice ----------------------
 var xxaudio;
-var srcogg;
-var srcmp3;
 var faildword;
 
 function build_oxford_us_str(words){
@@ -175,17 +174,16 @@ function voice_youdao(){
     str += faildword;
     str+="&type=1";
     jQuery(xxaudio).attr('onerror',"");
-    srcogg.attr('src',"");
-    srcmp3.attr('src',"");
     xxaudio.setAttribute('src', str);
     xxaudio.setAttribute('autoplay', 'autoplay');
+    xxaudio.play();
 }
 
 function voice_play(urlstr){
-    srcogg.attr('src',urlstr+".ogg");
-    srcmp3.attr('src',urlstr+".mp3");
-    xxaudio.setAttribute('src', urlstr+".mp3");
+    var oxurl = urlstr+".mp3";
+    xxaudio.setAttribute('src', oxurl);
     xxaudio.setAttribute('autoplay', 'autoplay');
+    xxaudio.play();
 }
 
 function voice_oxford_uk(){
@@ -199,6 +197,7 @@ function voice_oxford_uk(){
 }
 
 function voice_oxford(){  // default is us voice
+
     var xword = jQuery(this).text();
     faildword=xword;
     var oxurl= build_oxford_us_str(xword);
@@ -212,10 +211,6 @@ function voice_oxford(){  // default is us voice
 
 function init_ox_voice(dst_client){
     xxaudio = document.createElement('audio');
-    srcogg = jQuery("<source src='' type='audio/ogg'>");
-    srcmp3 = jQuery("<source src='' type='audio/mpeg'>");
-    jQuery(xxaudio).append(srcogg);
-    jQuery(xxaudio).append(srcmp3);
     jQuery(xxaudio).attr('autoplay', 'autoplay');
     jQuery(dst_client).click(voice_oxford);
 }
@@ -294,8 +289,8 @@ xxinit();
 
 function jQ_xxinit(){
     audioElement = document.createElement('audio');
-    init_ox_voice(".wrap_vo");
-    jQuery(".wrap_voy").click(voice_you_raw);
+    init_ox_voice(".wrap_voy");
+    jQuery(".wrap_vo").click(voice_you_raw);
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
     xxeditsize_add();
