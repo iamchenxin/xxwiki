@@ -289,8 +289,13 @@ xxinit();
 
 function jQ_xxinit(){
     audioElement = document.createElement('audio');
-    init_ox_voice(".wrap_voy");
-    jQuery(".wrap_vo").click(voice_you_raw);
+
+    if (device_class.match(/phone/)){
+        jQuery(".wrap_vo").click(voice_you_raw);
+        alert("iam phone");
+    }else{
+        init_ox_voice(".wrap_vo");
+    }
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
     xxeditsize_add();
