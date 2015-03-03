@@ -54,8 +54,8 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                                 if(!$tmp){ // use this method to make at mostly time ,tpl_include_page will excute once
                                     $userpage="user:".$INFO['client'];
 echo <<<END
-<a title="$usersidebar" class="wikilink1" href="/$usersidebar">create your sidebar</a><br/>
-<a title="$userpage" class="wikilink1" href="/$userpage">create your homepage</a><br/>
+<a title="$usersidebar" class="wikilink1" href="/$usersidebar?do=edit">create your sidebar</a><br/><span>Link code for sidebar: [[:$usersidebar]]</span><br/>
+<a title="$userpage" class="wikilink1" href="/$userpage?do=edit">create your homepage</a><br/><span>Link code for userpage: [[:$userpage]]</span><br/>
 END;
                                     tpl_include_page("user:none:".$conf['sidebar'], true, false); // user do not create his sidebar.
                                 }
