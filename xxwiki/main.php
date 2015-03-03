@@ -34,14 +34,32 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
             <div class="xxcontenthook rawedges" id="xxsidebar">
 
-                <?php if($showSidebar): ?>
+                <?php if(1): ?><!--[ $showSidebar ]>
                     <!-- ********** ASIDE ********** -->
                     <div id="dokuwiki__aside"><div class="pad aside include group">
                             <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
                             <div class="content">
                                 <?php tpl_flush() ?>
                                 <?php tpl_includeFile('sidebarheader.html') ?>
-                                <?php tpl_include_page($conf['sidebar'], true, true) ?>
+                                <?php
+                                $usersidebar = "user:";
+                                $usera =$INFO['client'];
+                                if($usera&&$GLOBALS['USERINFO']){
+                                    $usersidebar = $usersidebar.$usera.":";
+                                }else{
+                                    $usersidebar = $usersidebar."unlog:"; // show the unlog sidebar
+                                }
+                                $usersidebar = $usersidebar .$conf['sidebar'];
+                                $tmp = tpl_include_page($usersidebar, true, false);
+                                if(!$tmp){ // use this method to make at mostly time ,tpl_include_page will excute once
+                                    $userpage="user:".$INFO['client'];
+echo <<<END
+<a title="$usersidebar" class="wikilink1" href="/$usersidebar">create your sidebar</a><br/>
+<a title="$userpage" class="wikilink1" href="/$userpage">create your homepage</a><br/>
+END;
+                                    tpl_include_page("user:none:".$conf['sidebar'], true, false); // user do not create his sidebar.
+                                }
+                                ?>
                                 <?php tpl_includeFile('sidebarfooter.html') ?>
                             </div>
                         </div></div><!-- /aside -->
