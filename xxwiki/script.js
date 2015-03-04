@@ -94,10 +94,29 @@ function xxside_resize(){
 
     jQuery(".desktop #xxsidebar").width(bar_width);
 }
-
+var sider_status="hide";
 function xxside_show(){
     xxside_resize();
-    jQuery(".desktop #xxsidebar").slideToggle(500);
+    if(sider_status=="hide") { // original is sider_hide,
+        jQuery(".desktop #xxsidebar").slideDown(500); // so we show it at click
+        sider_status="visable"; //the sidebar is showed
+    }else{
+        jQuery(".desktop #xxsidebar").slideUp(500);
+        sider_status="hide";
+    }
+    DokuCookie.setValue('sider_status',sider_status);
+}
+function xxside_show_onload(){
+    sider_status = DokuCookie.getValue('sider_status');
+    if(sider_status==undefined){sider_status="hide";}else{
+        DokuCookie.setValue("what",sider_status);
+    }
+    xxside_resize();
+    if(sider_status=="visable"){
+        jQuery(".desktop #xxsidebar").show();
+        sider_status="visable"; //the sidebar is showed
+        DokuCookie.setValue('sider_status',sider_status);
+    }
 }
 
 if (!String.prototype.format) {
@@ -299,6 +318,6 @@ function jQ_xxinit(){
     jQuery(window).resize(xxside_resize);
     xxeditsize_add();
     SetTotop();
-
+    xxside_show_onload();
 }
 jQuery(jQ_xxinit);

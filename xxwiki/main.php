@@ -34,7 +34,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
             <div class="xxcontenthook rawedges" id="xxsidebar">
 
-                <?php if(1): ?><!--[ $showSidebar ]>
+                <?php if(1): ?><!--[ $showSidebar ] -->
                     <!-- ********** ASIDE ********** -->
                     <div id="dokuwiki__aside"><div class="pad aside include group">
                             <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
