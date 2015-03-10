@@ -13,6 +13,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 $hasSidebar = page_findnearest($conf['sidebar']);
 $showSidebar = $hasSidebar && ($ACT=='show');
+    require_once("myhelper.php");
 ?><!DOCTYPE html>
 <html lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
 <head>
@@ -41,25 +42,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                             <div class="content">
                                 <?php tpl_flush() ?>
                                 <?php tpl_includeFile('sidebarheader.html') ?>
-                                <?php
-                                $usersidebar = "user:";
-                                $usera =$INFO['client'];
-                                if($usera&&$GLOBALS['USERINFO']){
-                                    $usersidebar = $usersidebar.$usera.":";
-                                }else{
-                                    $usersidebar = $usersidebar."unlog:"; // show the unlog sidebar
-                                }
-                                $usersidebar = $usersidebar .$conf['sidebar'];
-                                $tmp = tpl_include_page($usersidebar, true, false);
-                                if(!$tmp){ // use this method to make at mostly time ,tpl_include_page will excute once
-                                    $userpage="user:".$INFO['client'];
-echo <<<END
-<a title="$usersidebar" class="wikilink1" href="/$usersidebar?do=edit">create your sidebar</a><br/><span>Link code for sidebar: [[:$usersidebar]]</span><br/>
-<a title="$userpage" class="wikilink1" href="/$userpage?do=edit">create your homepage</a><br/><span>Link code for userpage: [[:$userpage]]</span><br/>
-END;
-                                    tpl_include_page("user:none:".$conf['sidebar'], true, false); // user do not create his sidebar.
-                                }
-                                ?>
+                                <?php personal_sidebar() ?>
                                 <?php tpl_includeFile('sidebarfooter.html') ?>
                             </div>
                         </div></div><!-- /aside -->

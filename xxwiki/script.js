@@ -228,10 +228,23 @@ function voice_oxford(){  // default is us voice
     voice_play(oxurl);
 }
 
+function voice_mm(){
+    var str="http://w.ct.com/_dict/v/";
+    var xword = jQuery(this).text();
+    str += xword;
+    str+=".mp3";
+    jQuery(xxaudio).attr('onerror',"");
+    xxaudio.setAttribute('src', str);
+    xxaudio.setAttribute('autoplay', 'autoplay');
+    xxaudio.play();
+}
+
+
 function init_ox_voice(dst_client){
     xxaudio = document.createElement('audio');
     jQuery(xxaudio).attr('autoplay', 'autoplay');
-    jQuery(dst_client).click(voice_oxford);
+    jQuery(xxaudio).attr('onerror',"voice_youdao()");
+    jQuery(dst_client).click(voice_mm);
 }
 // END END END END
 
