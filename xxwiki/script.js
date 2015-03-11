@@ -230,7 +230,7 @@ function voice_oxford(){  // default is us voice
 function voice_mx(){
 //    var str="http://w.ct.com/_dict/d/";
 //    var str="http://b.ct.com/dv/";
-    var str="http://dict.qituc.com/dv";
+    var str="http://dict.qituc.com/dv/";
 
     var xword = jQuery(this).text();
     faildword=xword;
