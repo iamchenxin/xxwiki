@@ -148,19 +148,18 @@ function toobar_youdao(){
   //  alert("haha");
 }
 
-var audioElement ;
+var xxaudio;
 function voice_you_raw(){
 //        audioElement.setAttribute('src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3');
     var str="http://dict.youdao.com/dictvoice?audio=";
     str += jQuery(this).text();
     str+="&type=2";
-    audioElement.setAttribute('src', str);
-    audioElement.setAttribute('autoplay', 'autoplay');
-    audioElement.play();
+    xxaudio.setAttribute('src', str);
+    xxaudio.setAttribute('autoplay', 'autoplay');
+    xxaudio.play();
 }
 
 // --------------oxford voice ----------------------
-var xxaudio;
 var faildword;
 
 function build_oxford_us_str(words){
@@ -228,24 +227,52 @@ function voice_oxford(){  // default is us voice
     voice_play(oxurl);
 }
 
-function voice_mm(){
-    var str="http://w.ct.com/_dict/v/";
+function voice_mx(){
+//    var str="http://w.ct.com/_dict/d/";
+//    var str="http://b.ct.com/dv/";
+    var str="http://dict.qituc.com/dv";
+
     var xword = jQuery(this).text();
+    faildword=xword;
+    var sckey = jQuery.cookie("DWremoteinf");
+    if(sckey==undefined){
+        voice_you_raw();
+    }
+    str+=sckey;
+    str+="|";
     str += xword;
     str+=".mp3";
-    jQuery(xxaudio).attr('onerror',"");
+    jQuery(xxaudio).attr('onerror',"voice_youdao()");
     xxaudio.setAttribute('src', str);
     xxaudio.setAttribute('autoplay', 'autoplay');
     xxaudio.play();
 }
 
+// if (device_class.match(/phone/))  test if is a phone ,see the top
 
-function init_ox_voice(dst_client){
+function init_mxyd_voice(dst_client){
     xxaudio = document.createElement('audio');
     jQuery(xxaudio).attr('autoplay', 'autoplay');
     jQuery(xxaudio).attr('onerror',"voice_youdao()");
-    jQuery(dst_client).click(voice_mm);
+    if(jQuery.cookie("DWremoteinf")==undefined){ // no log ,set to youdao
+        jQuery(dst_client).click(voice_you_raw);
+    }else{
+        jQuery(dst_client).click(voice_mx);
+    }
+   /*
+    if (device_class.match(/phone/)){
+        jQuery(".wrap_vo").click(voice_you_raw);
+    }else{
+        init_ox_voice(".wrap_vo");
+    }
+    */
 }
+
+function testxxx(){
+    alert( jQuery.cookie("DWremoteinf"));
+}
+
+
 // END END END END
 
 function xxeditsize(height){
@@ -322,15 +349,12 @@ xxinit();
 function jQ_xxinit(){
     audioElement = document.createElement('audio');
 
-    if (device_class.match(/phone/)){
-        jQuery(".wrap_vo").click(voice_you_raw);
-    }else{
-        init_ox_voice(".wrap_vo");
-    }
+    init_mxyd_voice(".wrap_vo");
     jQuery("#xxtoolpop").click(xxside_show);
     jQuery(window).resize(xxside_resize);
     xxeditsize_add();
     SetTotop();
     xxside_show_onload();
+ //   testxxx();
 }
 jQuery(jQ_xxinit);
