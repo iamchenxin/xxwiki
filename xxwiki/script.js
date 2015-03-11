@@ -148,124 +148,96 @@ function toobar_youdao(){
   //  alert("haha");
 }
 
-var xxaudio;
+
+
+
+
+faildword="";
+
 function voice_you_raw(){
 //        audioElement.setAttribute('src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3');
     var str="http://dict.youdao.com/dictvoice?audio=";
     str += jQuery(this).text();
     str+="&type=2";
-    xxaudio.setAttribute('src', str);
-    xxaudio.setAttribute('autoplay', 'autoplay');
-    xxaudio.play();
+    mvoice = jQuery("#mxyd_vo")[0];
+    mvoice.setAttribute('onerror',"");
+    mvoice.setAttribute('src', str);
+    mvoice.setAttribute('autoplay', 'autoplay');
+//    mvoice.play();
+//    mvoice.setAttribute('src', "");
+
 }
 
-// --------------oxford voice ----------------------
-var faildword;
 
-function build_oxford_us_str(words){
-    words=words.trim(); // use trim to move white space and tab
-    var xxword=words.toLowerCase();
-    if(/[^a-z]/.test(xxword)==true)return ; //not a oxford word return
-    var str = "http://www.oxforddictionaries.com/us/media/american_english/us_pron/";
-    var backstr = xxword+"__us_1";
-    str+= backstr.slice(0,1)+'/';
-    str+= backstr.slice(0,3)+'/';
-    str+= backstr.slice(0,5)+'/';
-    str += backstr;
-    return str;
-}
-function build_uk_str(words){
-    words=words.trim(); // use trim to move white space and tab
-    var xxword=words.toLowerCase();
-    if(/[^a-z]/.test(xxword)==true)return ; //not a oxford word return
-    var str = "http://www.oxforddictionaries.com/us/media/american_english/uk_pron/";
-    var backstr = xxword+"__gb_1_8";
-    str+= backstr.slice(0,1)+'/';
-    str+= backstr.slice(0,3)+'/';
-    str+= backstr.slice(0,5)+'/';
-    str += backstr;
-    return str;
-}
-
-function voice_youdao(){
+function voice_youdao_helper(){
     var str="http://dict.youdao.com/dictvoice?audio=";
     str += faildword;
+
     str+="&type=1";
-    jQuery(xxaudio).attr('onerror',"");
-    xxaudio.setAttribute('src', str);
-    xxaudio.setAttribute('autoplay', 'autoplay');
-    xxaudio.play();
+    mvoice = jQuery("#mxyd_vo")[0];
+    mvoice.setAttribute('onerror',"");
+    mvoice.setAttribute('src', str);
+    mvoice.setAttribute('autoplay', 'autoplay');
+    //   mvoice.play();
+    // mvoice.play() ! this could lend ie  interupt!
+//    mvoice.setAttribute('src', '');
+
 }
 
-function voice_play(urlstr){
-    var oxurl = urlstr+".mp3";
-    xxaudio.setAttribute('src', oxurl);
-    xxaudio.setAttribute('autoplay', 'autoplay');
-    xxaudio.play();
-}
-
-function voice_oxford_uk(){
-    var oxurl= build_uk_str(faildword);
-    if(oxurl==undefined){
-        voice_youdao();
-        return;
-    }
-    jQuery(xxaudio).attr('onerror',"voice_youdao()");
-    voice_play(oxurl);
-}
-
-function voice_oxford(){  // default is us voice
-
-    var xword = jQuery(this).text();
-    faildword=xword;
-    var oxurl= build_oxford_us_str(xword);
-    if(oxurl==undefined){
-        voice_youdao();
-        return;
-    }
-    jQuery(xxaudio).attr('onerror',"voice_oxford_uk()");
-    voice_play(oxurl);
-}
 
 function voice_mx(){
-//    var str="http://w.ct.com/_dict/d/";
-//    var str="http://b.ct.com/dv/";
+
     var str="http://dict.qituc.com/dv/";
 
     var xword = jQuery(this).text();
     faildword=xword;
+
     var sckey = jQuery.cookie("DWremoteinf");
+
     if(sckey==undefined){
         voice_you_raw();
     }
     str+=sckey;
     str+="|";
     str += xword;
-    str+=".mp3";
-    jQuery(xxaudio).attr('onerror',"voice_youdao()");
-    xxaudio.setAttribute('src', str);
-    xxaudio.setAttribute('autoplay', 'autoplay');
-    xxaudio.play();
+    jx = jQuery("#mxyd_vo");
+    jx.removeAttr("src");
+
+    jQuery("#srcogg").attr("src",str+".ogg");
+    jQuery("#srcogg").attr('onerror',"voice_youdao_helper()");
+    jQuery("#srcmp3").attr("src",str+".mp3");
+    jx.attr('onerror',"voice_youdao_helper()");
+//   jQuery("#srcmp3").attr('onerror',"voice_youdao()");
+//    jx[0].pause();
+    jx[0].load();
+
+    jx[0].play();
+
 }
 
 // if (device_class.match(/phone/))  test if is a phone ,see the top
 
 function init_mxyd_voice(dst_client){
-    xxaudio = document.createElement('audio');
-    jQuery(xxaudio).attr('autoplay', 'autoplay');
-    jQuery(xxaudio).attr('onerror',"voice_youdao()");
+
+    jx = jQuery('<audio/>', { id: 'mxyd_vo', class: 'xxmxyd_vo'});
+
+    jx.attr('onerror',"voice_youdao_helper()");
+
+    jogg=jQuery("<source id='srcogg' src='' type='audio/ogg'/>");
+    jogg.attr('onerror',"voice_youdao_helper()");
+    jogg.appendTo(jx);
+
+    jmp3 = jQuery("<source id='srcmp3' src='' type='audio/mpeg'/>");
+    jmp3.appendTo(jx);
+
+    jQuery("body").append(jx);
+
     if(jQuery.cookie("DWremoteinf")==undefined){ // no log ,set to youdao
         jQuery(dst_client).click(voice_you_raw);
     }else{
+
         jQuery(dst_client).click(voice_mx);
     }
-   /*
-    if (device_class.match(/phone/)){
-        jQuery(".wrap_vo").click(voice_you_raw);
-    }else{
-        init_ox_voice(".wrap_vo");
-    }
-    */
 }
 
 function testxxx(){
@@ -347,7 +319,6 @@ function xxinit(){
 xxinit();
 
 function jQ_xxinit(){
-    audioElement = document.createElement('audio');
 
     init_mxyd_voice(".wrap_vo");
     jQuery("#xxtoolpop").click(xxside_show);
