@@ -13,7 +13,27 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 $hasSidebar = page_findnearest($conf['sidebar']);
 $showSidebar = $hasSidebar && ($ACT=='show');
-    require_once("myhelper.php");
+
+function personal_sidebar()
+{
+    $usersidebar = "user:";
+    $usera =$_SERVER['REMOTE_USER'];
+    if($usera){
+        $usersidebar = $usersidebar.$usera.":";
+    }else{
+        $usersidebar = $usersidebar."unlog:"; // show the unlog sidebar
+    }
+    $usersidebar = $usersidebar .'sidebar'; //$conf['sidebar']  but i do not kown how to ref global val
+    $tmp = tpl_include_page($usersidebar, true, false);
+    if(!$tmp){ // use this method to make at mostly time ,tpl_include_page will excute once
+        $userpage="user:".$INFO['client'];
+        echo <<<END
+<a title="$usersidebar" class="wikilink1" href="/$usersidebar?do=edit">create your sidebar</a><br/><span>Link code for sidebar: [[:$usersidebar]]</span><br/>
+<a title="$userpage" class="wikilink1" href="/$userpage?do=edit">create your homepage</a><br/><span>Link code for userpage: [[:$userpage]]</span><br/>
+END;
+        tpl_include_page("user:none:".'sidebar', true, false); // user do not create his sidebar.
+    }
+}
 ?><!DOCTYPE html>
 <html lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
 <head>
