@@ -185,11 +185,16 @@ function voice_youdao_helper(){
 }
 
 
-function voice_mx(){
+function voice_mx(inword){
 
     var str="http://dict.qituc.com/dv/";
+    var xword="";
+    if(inword!=undefined){
+        xword=inword;
+    }else{
+        xword = jQuery(this).text();
+    }
 
-    var xword = jQuery(this).text();
     faildword=xword;
 
     var sckey = jQuery.cookie("DWremoteinf");
