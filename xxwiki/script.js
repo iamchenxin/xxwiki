@@ -228,11 +228,11 @@ function init_mxyd_voice(dst_client){
 
     jx.attr('onerror',"voice_youdao_helper()");
 
-    jogg=jQuery("<source id='srcogg' src='' type='audio/ogg'/>");
+    jogg=jQuery("<source id='srcogg'  type='audio/ogg'/>");
     jogg.attr('onerror',"voice_youdao_helper()");
     jogg.appendTo(jx);
 
-    jmp3 = jQuery("<source id='srcmp3' src='' type='audio/mpeg'/>");
+    jmp3 = jQuery("<source id='srcmp3' type='audio/mpeg'/>");
     jmp3.appendTo(jx);
 
     jQuery("body").append(jx);
