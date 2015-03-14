@@ -55,7 +55,7 @@ END;
 
             <div id="xxrightbar">
                 <?php
-                $ffbar= plugin_load("helper","fftest");
+                $ffbar= plugin_load("helper","ajaxpeon");
                 $ffbar->make_searchbox();
                 ?>
             </div>

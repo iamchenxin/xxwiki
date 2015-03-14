@@ -151,19 +151,29 @@ function toobar_youdao(){
 
 
 
+function voice_you_word(word){
+    var str="http://dict.youdao.com/dictvoice?audio=";
+    str+=word;
+    str+="&type=1";
+    mvoice = jQuery("#mxyd_vo")[0];
+    mvoice.setAttribute('onerror',"");
+    mvoice.setAttribute('src', str);
+    mvoice.setAttribute('autoplay', 'autoplay');
+}
 
-faildword="";
+
+var faildword="";
 
 function voice_you_raw(){
 //        audioElement.setAttribute('src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3');
     var str="http://dict.youdao.com/dictvoice?audio=";
     str += jQuery(this).text();
-    str+="&type=2";
+    str+="&type=1";
     mvoice = jQuery("#mxyd_vo")[0];
     mvoice.setAttribute('onerror',"");
     mvoice.setAttribute('src', str);
     mvoice.setAttribute('autoplay', 'autoplay');
-//    mvoice.play();
+    mvoice.play();
 //    mvoice.setAttribute('src', "");
 
 }
@@ -178,29 +188,25 @@ function voice_youdao_helper(){
     mvoice.setAttribute('onerror',"");
     mvoice.setAttribute('src', str);
     mvoice.setAttribute('autoplay', 'autoplay');
-    //   mvoice.play();
+    mvoice.play();
     // mvoice.play() ! this could lend ie  interupt!
 //    mvoice.setAttribute('src', '');
 
 }
 
 
-function voice_mx(inword){
+function voice_mx(){
 
     var str="http://dict.qituc.com/dv/";
-    var xword="";
-    if(inword!=undefined){
-        xword=inword;
-    }else{
-        xword = jQuery(this).text();
-    }
+    var xword = jQuery(this).text();
 
     faildword=xword;
 
     var sckey = jQuery.cookie("DWremoteinf");
 
-    if(sckey==undefined){
+    if(sckey==null){
         voice_you_raw();
+        return;
     }
     str+=sckey;
     str+="|";
@@ -212,13 +218,42 @@ function voice_mx(inword){
     jQuery("#srcogg").attr('onerror',"voice_youdao_helper()");
     jQuery("#srcmp3").attr("src",str+".mp3");
     jx.attr('onerror',"voice_youdao_helper()");
+    jx.attr('autoplay', 'autoplay');
 //   jQuery("#srcmp3").attr('onerror',"voice_youdao()");
-//    jx[0].pause();
+    jx[0].pause();
+
     jx[0].load();
 
     jx[0].play();
+//    alert(str);
 
 }
+
+function voice_dict(word){
+    var str="http://dict.qituc.com/dv/";
+    var xword =word;
+    var sckey = jQuery.cookie("DWremoteinf");
+
+    if(sckey==null){
+        voice_you_word("please login.This function only available to users.");
+        return;
+    }
+
+    str+=sckey;
+    str+="|";
+    str += xword;
+    jx = jQuery("#mxyd_vo");
+    jx.removeAttr("src");
+
+    jQuery("#srcogg").attr("src",str+".ogg");
+    jQuery("#srcogg").attr('onerror',"voice_you_word('missing word,please record it to the missing words file.')");
+    jQuery("#srcmp3").attr("src",str+".mp3");
+    jx.attr('onerror',"voice_you_word('missing word,please record it to the missing words file.')");
+    jx[0].pause();
+    jx[0].load();
+    jx[0].play();
+}
+
 
 // if (device_class.match(/phone/))  test if is a phone ,see the top
 
